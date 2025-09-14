@@ -27,7 +27,7 @@ Jeśli znalazłeś błędy, niedopełnienia lub po prostu chcesz się skontaktow
 
 
 
-🇬🇧**WspinMapa** is a hobby project designed to collect publicly available information about climbing crags.  
+🇬🇧 **WspinMapa (ClimbMap)** is a hobby project designed to collect publicly available information about climbing crags.  
 The collected data allows displaying places in various configurations and browsing them based on different parameters.
 
 In this repository, you will find the basic Django configuration files that build the WspinMapa.pl application.  
@@ -38,7 +38,7 @@ Key points:
 - Complex, multi-relational `models.py`.
 - Dynamic and responsive `/templates/miejsca.html`.
 
-### Application description
+### App description
 All information contained in the descriptions of climbing areas is based on sources listed in the **links table**.  
 Auxiliary sources include printed climbing topo guides, which are also referenced in the descriptions of each area.
 
