@@ -1,6 +1,8 @@
 🇵🇱 **WspinMapa** jest hobbystycznym projektem służącym do zbierania ogólnodostępnych informacji o skałkach wspinaczkowych.  
 Zebrane dane pozwalają wyświetlać skałki w różnych konfiguracjach oraz przeglądać je w zależności od parametrów.
 W tym repozytorium znajdziesz podstawowe pliki konfiguracyjne django budujące aplikację WspinMapa.pl. Projekt oparty w dużej mierze o plugin folium.
+Filmik z omówieniem zawartości strony ➡️ **[link](https://www.youtube.com/watch?v=AGJzM38m-tM)**
+
 Na co warto zwrócić uwagę:
 - rozbudowane `views.py` oraz pomocnicze utils stworzone celem zaawansowanej konfiguracji  markerów,
 - plik `templates/popups/popup1.html`, dość sprytnie obchodzący ograniczenia folum względem wyświetlania danych po kliknięciu w marker,
