@@ -1,0 +1,49 @@
+{% include 'base.html' %}
+{% block content %}
+<style>
+<<<<<<< HEAD
+  html, body, #map-container, #map-container > div {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position:fixed;
+  }
+
+  .container-fluid, .row {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+=======
+html, body, #map-container, #map-container > div {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+}
+
+.container-fluid, .row {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+</style>
+
+>>>>>>> b340fe8e6abdcee855f20681815fed20d60d56eb
+<div class="container-fluid p-0">
+  <div class="row m-0">
+    <div id="map-container" class="col-12 p-0">
+      {{ m|safe }}
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+   .background {
+<<<<<<< HEAD
+       background-color: rgba(43,43,43,0.9);
+=======
+       background-image: url("{% static 'img/jura.jpg' %}");
+>>>>>>> b340fe8e6abdcee855f20681815fed20d60d56eb
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+   }
+   .background_div {
+       background-color: rgba(	128,128,128,0.85);
+       padding:5px;
+       border-radius: 5px;
+       height: 100vh;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+       line-height: 160%;
+       font-family: 'Courier New', monospace;
+       color: white;
+       text-shadow: black 1px 0 10px;
+   }
+</style>
+
+<body class="background">
+    <div class="col-md-6 offset-md-3 background_div">
+        <form action="/site/" method="post">
+            {% csrf_token %}
+            <br>
+            {{form.strona.label}}
+            {{form.strona}}
+            <br>
+            {{form.rodzaj_strony.label}}
+            {{form.rodzaj_strony}}
+            <br>
+            {{form.tytul.label}}
+            {{form.tytul}}
+            <br>
+            {{form.link.label}}
+            {{form.link}}
+            <br>
+            {{form.crags.label}}
+            {{form.crags}}
+            <br>
+
+
+            <input type="submit" value="Dodaj" class="btn btn-info">
+            {% for message in messages %}
+            <br>
+         <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+          </div>
+            {% endfor %}
+
+    </div>
+</body>
+{% endblock %}
+

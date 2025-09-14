@@ -1,0 +1,284 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
+
+=======
+>>>>>>> b340fe8e6abdcee855f20681815fed20d60d56eb
+  <title>WspinMapa</title>
+
+ <style>
+
+  h2 {
+    text-align: center;
+    color: white;
+    margin-right: 40px;
+    margin-left: 20px;
+  }
+
+
+  body {
+    background-color: #FFFFFF;
+  }
+
+  .custom-dropdown {
+    background-color: #343a40 !important;
+    color: white !important;
+    border: 0px;
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:auto;
+    padding: 0;
+  }
+
+  .modal-body img {
+    display: block;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #111010;
+  }
+ .modal-content {
+    background-color: transparent ;
+    border: none ;
+  }
+  .fade {
+    color: #ffffff !important;
+    background-color: rgba(0,0,0,0.4)
+  }
+  .modal-xl
+     {
+     background-color: rgba(43,43,43,0.9);
+     border-radius: 25px;
+     }
+  .carousel-control-next,
+  .carousel-control-prev /*, .carousel-indicators */ {
+      filter: invert(100%);
+  }
+  .close {
+    color: #ffffff !important;   /* biały */
+  }
+  .modal-title {
+      color: white;
+    }
+
+
+  .modal-body {
+      color: white;
+      padding-left: 20px;
+      padding-right: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding-top: 10px;
+
+    }
+
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <h2>WspinMapa <i class="fas fa-globe-europe"></i></h2>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mapa
+        </a>
+        <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+          <a class="nav-item nav-link" href="{% url 'index' %}">Miejsca</a>
+          <a class="nav-item nav-link" href="{% url 'mapa_skaly' %}">Rodzaje skał</a>
+          <a class="nav-item nav-link" href="{% url 'mapa_wyceny' %}">Wyceny</a>
+
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'szukaj' %}">Szukajka</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dodaj
+        </a>
+        <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown2">
+          <a class="nav-item nav-link" href="{% url 'dodaj_site' %}">Dodaj stronę</a>
+        </div>
+      </li>
+    </ul>
+
+    <!-- PRZYCISKI INFO I LEGENDA PO PRAWEJ -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item d-flex align-items-center">
+        <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#ModalSamouczek">
+          Jak używać strony
+        </button>
+      </li>
+      <li class="nav-item d-flex align-items-center">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalInfo">
+          Info
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MODAL Jak Używać strony -->
+<div class="modal fade" id="ModalSamouczek" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document"> <!-- modal-lg dla większego okna -->
+    <div class="modal-content">
+      <button type="button" class="close ml-auto mr-1 mt-1" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body p-0">
+        <div id="carouselInsideModal" class="carousel slide" data-ride="carousel" data-interval="false">
+
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <img src="{% static 'img/samouczek1.jpg' %}" class="img-fluid">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/samouczek2.jpg' %}" class="img-fluid"  >
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/samouczek3.jpg' %}" class="img-fluid"  >
+            </div>
+          </div>
+
+          <!-- Strzałka w lewo -->
+          <a class="carousel-control-prev" href="#carouselInsideModal" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Poprzedni</span>
+          </a>
+
+          <!-- Strzałka w prawo -->
+          <a class="carousel-control-next" href="#carouselInsideModal" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Następny</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL INFO -->
+
+<div class="modal fade" id="ModalInfo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Czym jest WspinMapa?</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <p><strong>WspinMapa</strong> jest hobbystycznym projektem służącym zebraniu ogólnodostępnych informacji o skałkach wspinaczkowych.
+          Zebrane dane pozwalają wyświetlać skałki w różnych konfiguracjach oraz przeglądać je w zależności od parametrów.</p>
+
+          <p>Wszystkie informacje zawarte w opisach miejsc wspinaczkowych oparte są o źródła wpisane w tabelce <b>linki</b>.
+           Źródłem pomocnicznym są drukowane topo, o których informacja również pojawia się przy opisie wybranego rejonu.</p>
+
+
+          <p>Informacja o wycenach jest oparta na danych o drogach znajdujących się w linkach (głównie thecrag i portalgórski).
+          Ocena trudności rejonu może okazać się dość subiektywna.</p>
+          <ul>
+            <li><strong>Łatwe</strong> – wyceny głównie do VI</li>
+            <li><strong>Średnie</strong> – wyceny głównie w okolicach VI+ – VI.2</li>
+            <li><strong>Trudne</strong> – wyceny głównie powyżej VI.2+</li>
+            <li><strong>Zróżnicowane</strong> – ciężko określić, jakie wyceny dominują w danym rejonie</li>
+          </ul>
+          <p>Informacje o rodzaju skał oraz ich wieku zostały wyinterpretowane na podstawie
+          <em>Szczegółowych Map Geologicznych Polski w skali 1:50000</em>.
+          Dodatkowo autor posiłkował się badaniami terenowymi.</p>
+
+          <p>Dane o skałach <span style="color: red;">należy traktować informacyjnie</span> i weryfikować je samodzielnie!
+          Nie każda pojedyncza skałka została uwzględniona na mapie - w miejscach występowania wielu skałek w jednym miejscu są
+          one zgrupowane w rejony (Np. Mirów, Rzędkowice). Takie podejście wynika z próby uczytelnienia mapy (i nie narobienia sobie roboty na 5 lat).
+          Baza danych jest uzupełniana z maksymalną starannością, jednak mogą pojawić się błędy, za które serdecznie przepraszam.</p>
+
+          <p>Jeśli znalazłeś błędy, niedopełnienia lub po prostu chcesz się skontaktować– pisz na:
+          <a href="mailto:majewskikkar@gmail.com">majewskikkar@gmail.com</a></p>
+          <p>Podziękowania dla Janka O. i Marka SM. za wsparcie techniczne i dla Tadka G. za wsparcie merytoryczne <i class="fa-solid fa-heart"></i> </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Zamknij</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--{% if m_skaly %}-->
+<!--<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered ">-->
+<!--    <div class="modal-content">-->
+<!--      <span style="margin-left: 20px; margin-top: 10px">Rodzaje skał:</span>-->
+<!--      <span style="color: black;"><i class="fa-solid fa-location-dot"></i> Bazalt</span>-->
+<!--      <span style="color: darkgreen;"><i class="fa-solid fa-location-dot"></i> Brekcja kwarcowa</span>-->
+<!--      <span style="color: orange;"><i class="fa-solid fa-location-dot"></i> Gabro</span>-->
+<!--      <span style="color: darkred;"><i class="fa-solid fa-location-dot"></i> Gnejs</span>-->
+<!--      <span style="color: pink;"><i class="fa-solid fa-location-dot"></i> Granit</span>-->
+<!--      <span style="color: purple;"><i class="fa-solid fa-location-dot"></i> Hornfels</span>-->
+<!--      <span style="color: wheat;"><i class="fa-solid fa-location-dot"></i> Marmur</span>-->
+<!--      <span style="color: purple;"><i class="fa-solid fa-location-dot"></i> Metatrachit</span>-->
+<!--      <span style="color: cadetblue;"><i class="fa-solid fa-location-dot"></i> Łupek</span>-->
+<!--      <span style="color: red;"><i class="fa-solid fa-location-dot"></i> Piaskowiec/Zlepieniec</span>-->
+<!--      <span style="color: lightcoral;"><i class="fa-solid fa-location-dot"></i> Piaskowiec</span>-->
+<!--      <span style="color: darkblue;"><i class="fa-solid fa-location-dot"></i> Ryolit</span>-->
+<!--      <span style="color: blue;"><i class="fa-solid fa-location-dot"></i> Wapień</span>-->
+<!--      <span style="color: lightblue;"><i class="fa-solid fa-location-dot"></i> Wapień/Dolomit</span>-->
+<!--      <span style="color: lightgreen;"><i class="fa-solid fa-location-dot"></i> Zieleniec</span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--{% endif %}-->
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+</script>
+
+
+
+
+{% block content %}{% endblock %}
+</body>
+</html>

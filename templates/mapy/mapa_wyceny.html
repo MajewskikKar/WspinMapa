@@ -1,0 +1,25 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <style>
+        /* Reset margins and paddings */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF8DC
+        }
+
+        /* Set the height of the map container to 100% of the viewport height */
+        #map-container {
+            height: 100vh;
+        }
+    </style>
+
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div id="map-container" class="col-12 p-0">
+                {{ m|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

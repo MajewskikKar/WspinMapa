@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+    .main-container {
+        background-color: rgba(43,43,43,0.9);
+
+        padding: 5px; /* Add padding for inner spacing */
+    }
+
+   .background-contianter {
+       border-radius: 25px;
+       background-color: rgba(128, 128, 128, 0.50);
+    }
+    .col > * {
+    margin-bottom: 0px;
+}
+    .col-form-label{
+    color:white;
+    text-shadow: black 1px 0 10px;
+    }
+    .table tbody tr,
+    .table thead th{
+      border-bottom: 2px solid rgba(41, 112, 65,0.6);
+    }
+    .center {
+    text-align: center;
+    }
+    .contstyle {
+        border-radius: 25px;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+    }
+    .trstyle {
+    text-align: center;
+    }
+</style>
+
+<div class="main-container">
+<div class="container background-contianter">
+    <form method="GET" action="{% url 'szukaj' %}" class="mb-4">
+    <br>
+        <div class="row">
+            <div class="col center">
+                <label for="nazwa" class="col-sm-12 col-form-label">Nazwa </label>
+                <div class="col">
+                    {{ form.nazwa }}
+                </div>
+
+
+                <label for="rodzaj" class="col-sm-12 col-form-label">Główny rodzaj wspinania</label>
+                <div class="col">
+                    {{ form.rodzaj }}
+                </div>
+
+
+                <label for="wysokosc" class="col-sm-12 col-form-label">Wysokość maksymalna</label>
+                <div class="col">
+                    {{ form.wysokosc_min }}
+                    {{ form.wysokosc_max }}
+                </div>
+
+                <label for="skala" class="col-sm-12 col-form-label">Wiek skał</label>
+                <div class="col">
+                    {{ form.wiek_skal }}
+                </div>
+            </div>
+
+            <div class="col center">
+                <label for="wyceny" class="col-sm-12 col-form-label">Wyceny</label>
+                <div class="col">
+                    {{ form.wyceny }}
+                </div>
+
+                <label for="ilosc_drog" class="col-sm-12 col-form-label">Ilość dróg</label>
+                <div class="col">
+                    {{ form.ilosc_drog }}
+                </div>
+
+                <label for="wiek_skal" class="col-sm-12 col-form-label">Rodzaj skały</label>
+                <div class="col">
+                    {{ form.skala }}
+                </div>
+
+                <label for="rejon" class="col-sm-12 col-form-label">Rejon</label>
+                <div class="col">
+                    {{ form.rejon }}
+                </div>
+
+            </div>
+        </div>
+            <div class="row mb-1">
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-light">Szukaj</button>
+                <a href="{% url 'szukaj' %}" class="btn btn-dark">Wyczyść</a>
+            </div>
+        </div>
+    <br>
+    </form>
+</div>
+
+
+
+
+
+
+<div class="container contstyle">
+    <table class="table trstyle">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Rodzaj</th>
+                <th>Wysokość</th>
+                <th>Wyceny</th>
+                <th>Rodzaj skały</th>
+                <th>Ilość dróg</th>
+                <th>Wiek</th>
+                <th>Facja</th>
+                <th>Rejon</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for crag in crags %}
+                <tr>
+                    <td><a href="{% url 'miejsca' nazwa=crag.nazwa %}">{{ crag.nazwa }}</a></td>
+                    <td>{{ crag.rodzaj }}</td>
+                    <td>{{ crag.wysokosc }}</td>
+                    <td>{{ crag.wyceny }}</td>
+                    <td>{{ crag.skala }}</td>
+                    <td>{{ crag.ilosc_drog }}</td>
+                    <td>{{ crag.wiek_skal }}</td>
+                    <td>{{ crag.facja }}</td>
+                    <td>{{ crag.rejon }} {% if crag.rejon_alt %}, {{ crag.rejon_alt }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+{% endblock %}
+</div>

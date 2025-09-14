@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+   .background {
+       background-image: url("/static/img/jura.jpg");
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+   }
+   .background_div {
+       background-color: rgba(128, 128, 128, 0.75);
+       padding: 20px;
+       border-radius: 10px;
+       height: 100vh;
+       text-align: center;
+       display: flex; /* Use flexbox */
+       justify-content: center; /* Center horizontally */
+       align-items: center; /* Center vertically */
+       text-align: center;
+       line-height: 200%;
+       font-family: 'Courier New', monospace;
+       color: white;
+       text-shadow: black 1px 0 10px;
+   }
+</style>
+<body class="background">
+    <div class="col-md-6 offset-md-3 background_div">
+
+            <form action="/movie/" method="post">
+                {% csrf_token %}
+
+                {{form.nazwa_filmu.label}}
+                {{form.nazwa_filmu}}
+                <br>
+                {{form.link.label}}
+                {{form.link}}
+                <br>
+                {{form.crags.label}}
+                {{form.crags}}
+                <br>
+
+                <input type="submit" value="Dodaj" class="btn btn-info">
+            </form>
+            <div>
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} alert-dismissible fade show" role="alert">
+                        <strong>{{message}}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+</body>
+{% endblock %}
